@@ -1,0 +1,37 @@
+load("@aspect_bazel_lib//lib:copy_to_bin.bzl", "copy_to_bin")
+load("@npm//:react-scripts/package_json.bzl", cra_bin = "bin")
+
+copy_to_bin(
+    name = "static_files",
+    srcs = glob(
+        [
+            "public/*",
+            "src/**/*",
+        ],
+    ) + [
+        "//:package_json",
+        "tsconfig.json",
+    ],
+)
+
+_RUNTIME_DEPS = [
+    "static_files",
+    "//:node_modules/react",
+    "//:node_modules/react-dom",
+]
+
+cra_bin.react_scripts(
+    # Note: If you want to change the name make sure you update BUILD_PATH below accordingly
+    # https://create-react-app.dev/docs/advanced-configuration/
+    name = "build",
+    srcs = _RUNTIME_DEPS + [
+        "//:node_modules/react-scripts",
+        "//:node_modules/typescript",
+        "//:node_modules/web-vitals",
+    ],
+    args = ["build"],
+    env = {
+        "BUILD_PATH": "./build",
+    },
+    out_dirs = ["build"],
+)
