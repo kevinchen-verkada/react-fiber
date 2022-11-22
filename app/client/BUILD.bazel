@@ -1,7 +1,6 @@
-load("@aspect_bazel_lib//lib:copy_to_bin.bzl", "copy_to_bin")
 load("@npm//:react-scripts/package_json.bzl", cra_bin = "bin")
 
-copy_to_bin(
+filegroup(
     name = "static_files",
     srcs = glob(
         [
@@ -11,6 +10,7 @@ copy_to_bin(
     ) + [
         "//:package_json",
         "tsconfig.json",
+        "package.json",
     ],
 )
 
@@ -25,11 +25,14 @@ cra_bin.react_scripts(
     # https://create-react-app.dev/docs/advanced-configuration/
     name = "build",
     srcs = _RUNTIME_DEPS + [
+        "//:node_modules/@types/react",
+        "//:node_modules/@types/react-dom",
         "//:node_modules/react-scripts",
         "//:node_modules/typescript",
         "//:node_modules/web-vitals",
     ],
     args = ["build"],
+    chdir = package_name(),
     env = {
         "BUILD_PATH": "./build",
     },

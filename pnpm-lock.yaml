@@ -7,6 +7,8 @@ specifiers:
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/react': 13.4.0
   '@testing-library/user-event': 13.5.0
+  '@types/react': ^18.0.18
+  '@types/react-dom': ^18.0.6
   '@typescript-eslint/eslint-plugin': 5.40.0
   '@typescript-eslint/parser': 5.40.0
   react: 18.2.0
@@ -19,6 +21,8 @@ dependencies:
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
   '@testing-library/user-event': 13.5.0
+  '@types/react': 18.0.25
+  '@types/react-dom': 18.0.9
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-scripts: 5.0.1_2q5yqitqkkawo4ktk7nrbtxhym
