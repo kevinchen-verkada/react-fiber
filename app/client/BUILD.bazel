@@ -9,7 +9,7 @@ filegroup(
         ],
     ) + [
         "//:package_json",
-        "tsconfig.json",
+        "//:tsconfig",
         "package.json",
     ],
 )
